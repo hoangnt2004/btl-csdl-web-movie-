@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Rạp Suất Chiếu</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../asset/css/admin.css">
+
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="brand">
+            <span>Quản Lý Rạp Phim</span>
+            <i class="fas fa-bars"></i>
+        </div>
+
+        <div class="sidebar-category">QUẢN LÝ</div>
+        <ul class="sidebar-nav">
+
+            <li>
+                <a href="customer.html">
+                    <i class="fas fa-users"></i>
+                    <span>Khách Hàng</span>
+                </a>
+            </li>
+            <li >
+                <a href="admin.html" >
+                    <i class="fas fa-film"></i>
+                    <span>Phim</span>
+                </a>
+            </li>
+            <li>
+                <a href="showtime.html" class="active">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>Xuất Chiếu</span>
+                </a>
+            </li>
+            <li>
+                <a href="cinema.html">
+                    <i class="fas fa-theater-masks"></i>
+                    <span>Rạp</span>
+                </a>
+            </li>
+            <li>
+                <a href="report.html">
+                    <i class="fas fa-chart-bar"></i>
+                    <span>Thống Kê</span>
+                </a>
+            </li>
+        </ul>
+
+
+    </div>
+    <!-- Main Content -->
+   <div class="container">
+       <button class="home-button">
+                <i class="fas fa-home"></i> Trang Chính
+            </button>
+
+        <div class="header">
+            <h1>Danh sách suất chiếu</h1>
+
+            <div class="search-container">
+                <input type="text" placeholder="Tìm kiếm phim...">
+                <button type="button">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+            <button class="add-button">
+                <i class="fas fa-plus"></i> Thêm suất chiếu mới
+            </button>
+
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Tên phim</th>
+                    <th>Thời gian bắt đầu</th>
+                    <th>Rạp</th>
+                    <th>Phòng</th>
+                    <th> Thao tác</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Avengers: Endgame</td>
+                    <td>25/03/2025 8:00</td>
+                    <td>PCINEMA HÀ ĐÔNG</td>
+                    <td>PHÒNG 01</td>
+                    <td>
+                        <div class="action-buttons">
+                             <button class="action-button edit-button" title="Chỉnh sửa"><i class="fas fa-edit"></i></button>
+                            <button class="action-button delete-button" title="Xóa"><i class="fas fa-trash-alt"></i></button>
+                        </div>
+                    </td>
+                </tr>
+                 
+
+            </tbody>
+        </table>
+
+        <div class="pagination">
+            <div class="page-info">
+                <span id="page-summary">Hiển thị 1-5 của 25 suất chiếu</span>
+                <div class="page-size-container" style="display: flex; align-items: center; gap: 5px;">
+                    <label for="pageSize">Hiển thị:</label>
+                    <select id="pageSize" style="height: auto;">
+                        <option value="5">5</option>
+                        <option value="10" selected>10</option>
+                        <option value="20">20</option>
+                        <option value="50">50</option>
+                    </select>
+                </div>
+            </div>
+            <div class="page-controls">
+                <button class="page-button prev-page" disabled><i class="fas fa-angle-left"></i></button>
+                <div id="pagination-numbers" class="pagination-numbers">
+                    <!-- Pagination numbers will be generated here -->
+                </div>
+                <button class="page-button next-page"><i class="fas fa-angle-right"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Adding New Showtime -->
+    <div id="addShowtimeModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Thêm Suất Chiếu Mới</h2>
+            </div>
+            <form id="addShowtimeForm" class="modal-body">
+                <label for="addMovie">Phim:</label>
+            <select id="addMovie" name="movie">
+
+
+            </select>
+
+                <label for="startTime">Thời gian bắt đầu:</label>
+                <input type="datetime-local" id="startTime" name="startTime" required>
+
+                <label for="cinemaName">Rạp:</label>
+            <select id="cinemaName" name="cinema">
+<!--                <option value="NOW_SHOWING">Đang chiếu</option>-->
+
+            </select>
+                <label for="roomName">Phòng:</label>
+                <select id="roomName" name="room">
+                <!--                <option value="NOW_SHOWING">Đang chiếu</option>-->
+
+                </select>
+            </form>
+            <div class="modal-footer">
+                <button type="submit" form="addShowtimeForm">Thêm mới</button>
+                <button type="button" id="cancelAddShowtime">Hủy</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Editing Showtime -->
+    <div id="editShowtimeModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Sửa Thông Tin Suất Chiếu</h2>
+            </div>
+            <form id="editShowtimeForm" class="modal-body">
+                <label for="editMovieName">Tên phim:</label>
+                <select id="editMovieName" name="movie">
+
+
+                 </select>
+
+                <label for="editStartTime">Thời gian bắt đầu:</label>
+                <input type="datetime-local" id="editStartTime" name="startTime" required>
+
+                <label for="editCinemaName">Rạp:</label>
+                <select id="editCinemaName" name="cinemaName" required>
+                </select>
+
+                <label for="editRoomName">Phòng:</label>
+                <select id="editRoomName" name="roomName" required>
+                </select>
+            </form>
+            <div class="modal-footer">
+                <button type="submit" form="editShowtimeForm">Lưu thay đổi</button>
+                <button type="button" id="cancelEditShowtime">Hủy</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script src="../asset/js/showtime.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Toggle sidebar
+            $('.brand i').click(function() {
+                $('body').toggleClass('sidebar-collapsed');
+                $('.sidebar').toggleClass('collapsed');
+            });
+
+
+
+            // Home button functionality
+            $('.home-button').click(function() {
+                window.location.href="./home.html"
+            });
+
+        });
+    </script>
+<script>
+        $(document).ready(function() {
+            // Search functionality
+            $('.search-container button').click(function() {
+                const searchTerm = $('.search-container input').val().toLowerCase();
+                $('tbody tr').each(function() {
+                    const title = $(this).find('td:nth-child(3)').text().toLowerCase();
+                    const genre = $(this).find('td:nth-child(4)').text().toLowerCase();
+                    if (title.includes(searchTerm) || genre.includes(searchTerm)) {
+                        $(this).show();
+                    } else {
+                        $(this).hide();
+                    }
+                });
+            });
+
+           
+
+            // Pagination functionality
+            $('.page-controls .page-button').not(':first, :last').click(function() {
+                $('.page-controls .page-button').removeClass('active');
+                $(this).addClass('active');
+            });
+        });
+    </script>
+</body>
+</html>

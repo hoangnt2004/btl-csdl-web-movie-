@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Rạp Chiếu Phim</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../asset/css/admin.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="brand">
+            <span>Quản Lý Rạp Phim</span>
+            <i class="fas fa-bars"></i>
+        </div>
+
+        <div class="sidebar-category">QUẢN LÝ</div>
+        <ul class="sidebar-nav">
+
+            <li>
+                <a href="customer.html">
+                    <i class="fas fa-users"></i>
+                    <span>Khách Hàng</span>
+                </a>
+            </li>
+            <li >
+                <a href="admin.html" >
+                    <i class="fas fa-film"></i>
+                    <span>Phim</span>
+                </a>
+            </li>
+            <li>
+                <a href="showtime.html">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>Xuất Chiếu</span>
+                </a>
+            </li>
+            <li>
+                <a href="cinema.html">
+                    <i class="fas fa-theater-masks"></i>
+                    <span>Rạp</span>
+                </a>
+            </li>
+            <li>
+                <a href="report.html "  class="active">
+                    <i class="fas fa-chart-bar"></i>
+                    <span>Thống Kê</span>
+                </a>
+            </li>
+        </ul>
+
+
+    </div>
+    <!-- Main Content -->
+   <div class="container">
+       <button class="home-button">
+                <i class="fas fa-home"></i> Trang Chính
+       </button>
+
+
+       <h2 style="margin-top: 40px;">Doanh thu theo rạp (tháng/năm)</h2>
+       <div style="margin-top: 20px;">
+        <button id="view-monthly" class="toggle-btn">Xem theo tháng</button>
+        <button id="view-yearly" class="toggle-btn">Xem theo năm</button>
+        </div>
+       <canvas id="cinemaRevenueChart" width="800" height="400"></canvas>
+
+
+
+    </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Toggle sidebar
+            $('.brand i').click(function () {
+                $('body').toggleClass('sidebar-collapsed');
+                $('.sidebar').toggleClass('collapsed');
+            });
+
+
+            // Home button functionality
+            $('.home-button').click(function () {
+                window.location.href = "./home.html"
+            });
+
+            // Simulate loading data for the table (would be replaced with actual AJAX)
+        })
+    </script>
+<script>
+        $(document).ready(function() {
+            // Search functionality
+            $('.search-container button').click(function() {
+                const searchTerm = $('.search-container input').val().toLowerCase();
+                $('tbody tr').each(function() {
+                    const title = $(this).find('td:nth-child(3)').text().toLowerCase();
+                    const genre = $(this).find('td:nth-child(4)').text().toLowerCase();
+                    if (title.includes(searchTerm) || genre.includes(searchTerm)) {
+                        $(this).show();
+                    } else {
+                        $(this).hide();
+                    }
+                });
+            });
+
+
+
+            // Pagination functionality
+            $('.page-controls .page-button').not(':first, :last').click(function() {
+                $('.page-controls .page-button').removeClass('active');
+                $(this).addClass('active');
+            });
+        });
+    </script>
+<script src="../asset/js/report.js"></script>
+</body>
+</html>

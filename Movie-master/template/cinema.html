@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Rạp Chiếu Phim</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../asset/css/admin.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="brand">
+            <span>Quản Lý Rạp Phim</span>
+            <i class="fas fa-bars"></i>
+        </div>
+
+        <div class="sidebar-category">QUẢN LÝ</div>
+        <ul class="sidebar-nav">
+
+            <li>
+                <a href="customer.html">
+                    <i class="fas fa-users"></i>
+                    <span>Khách Hàng</span>
+                </a>
+            </li>
+            <li >
+                <a href="admin.html" >
+                    <i class="fas fa-film"></i>
+                    <span>Phim</span>
+                </a>
+            </li>
+            <li>
+                <a href="showtime.html">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>Xuất Chiếu</span>
+                </a>
+            </li>
+            <li>
+                <a href="cinema.html" class="active">
+                    <i class="fas fa-theater-masks"></i>
+                    <span>Rạp</span>
+                </a>
+            </li>
+            <li>
+                <a href="report.html">
+                    <i class="fas fa-chart-bar"></i>
+                    <span>Thống Kê</span>
+                </a>
+            </li>
+        </ul>
+
+
+    </div>
+    <!-- Main Content -->
+   <div class="container">
+       <button class="home-button">
+                <i class="fas fa-home"></i> Trang Chính
+            </button>
+
+        <div class="header">
+            <h1>Danh sách rạp</h1>
+
+            <div class="search-container">
+                <input type="text" placeholder="Tìm kiếm rạp...">
+                <button type="button">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+            <button class="add-button">
+                <i class="fas fa-plus"></i> Thêm Rạp mới
+            </button>
+
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Tên Rạp</th>
+                    <th>Điạ chỉ</th>
+
+
+                    <th> Thao tác</th>
+                </tr>
+            </thead>
+            <tbody id="tbody">
+<!--                <tr>-->
+<!--                    <td>1</td>-->
+<!--                    <td>PCINEMA HÀ ĐÔNG</td>-->
+<!--                    <td>10 Trần Phú Hà Đông Hà Nội</td>-->
+
+
+<!--                    <td>-->
+<!--                        <div class="action-buttons">-->
+<!--                            <button class="action-button view-button" title="Xem"><i class="fas fa-eye"></i></button>-->
+<!--                             <button class="action-button edit-button" title="Chỉnh sửa"><i class="fas fa-edit"></i></button>-->
+<!--                            <button class="action-button delete-button" title="Xóa"><i class="fas fa-trash-alt"></i></button>-->
+<!--                        </div>-->
+<!--                    </td>-->
+<!--                </tr>-->
+
+
+            </tbody>
+        </table>
+
+        <div class="pagination">
+            <div class="page-info">
+                <span id="page-summary">Hiển thị 1-9 của 25 rạp</span>
+                <div class="page-size-container">
+                    <label for="pageSize">Hiển thị:</label>
+                    <select id="pageSize">
+                        <option value="5">5</option>
+                        <option value="10" selected>10</option>
+                        <option value="20">20</option>
+                        <option value="50">50</option>
+                    </select>
+                </div>
+            </div>
+            <div class="page-controls">
+                <button class="page-button prev-page" disabled><i class="fas fa-angle-left"></i></button>
+                <div id="pagination-numbers" class="pagination-numbers">
+                    <!-- Pagination numbers will be generated here -->
+                </div>
+                <button class="page-button next-page"><i class="fas fa-angle-right"></i></button>
+            </div>
+        </div>
+    </div>
+<div id="addCinemaModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Thêm Rạp Mới</h2>
+        </div>
+        <form id="addCinemaForm" class="modal-body">
+            <label for="cinemaName">Tên rạp:</label>
+            <input type="text" id="cinemaName" name="name" required>
+
+            <label for="cinemaAddress">Địa chỉ:</label>
+            <input type="text" id="cinemaAddress" name="address" required>
+        </form>
+        <div class="modal-footer">
+            <button type="submit" form="addCinemaForm">Thêm mới</button>
+            <button type="button" id="cancelAdd">Hủy</button>
+        </div>
+
+    </div>
+
+</div>
+<div id="cinemaDetailModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Chi Tiết Rạp</h2>
+        </div>
+        <div class="modal-body">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tên phòng</th>
+                        <th>Số lượng ghế</th>
+                        <th>Loại phòng</th>
+                        <th>Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody id="roomTableBody">
+                    <!-- Dữ liệu phòng chiếu sẽ được thêm bằng JS -->
+                </tbody>
+            </table>
+        </div>
+        <div class="modal-footer">
+            <button type="button" id="addRoom">Thêm mới phòng</button>
+            <button type="button" id="closeCinemaDetail">Đóng</button>
+        </div>
+    </div>
+</div>
+<div id="addRoomModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Thêm Phòng Mới</h2>
+        </div>
+        <form id="addRoomForm" class="modal-body">
+            <label for="RoomName">Tên phòng:</label>
+            <input type="text" id="RoomName" name="name" required>
+
+            <label for="RoomType">Loại phòng:</label>
+            <select id="RoomType" name="type" required>
+                <option value="">-- Chọn loại phòng --</option>
+                <option value="2D">2D</option>
+                <option value="3D">3D</option>
+            </select>
+
+            <label for="RoomNumber">Số lượng ghế:</label>
+            <input type="number" id="RoomNumber" name="number" required min="1">
+        </form>
+        <div class="modal-footer">
+            <button type="submit" form="addRoomForm">Thêm mới</button>
+            <button type="button" id="cancelAddRoom">Hủy</button>
+        </div>
+    </div>
+</div>
+<div id="editCinemaModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Sửa Thông Tin Rạp</h2>
+        </div>
+        <form id="editCinemaForm" class="modal-body">
+            <label for="cinemaName">Tên rạp:</label>
+            <input type="text" id="editCinemaName" name="name" required>
+
+            <label for="cinemaAddress">Địa chỉ:</label>
+            <input type="text" id="editCinemaAddress" name="address" required>
+
+        </form>
+        <div class="modal-footer">
+            <button type="submit" form="editCinemaForm">Sửa Thông tin</button>
+            <button type="button" id="cancelEdit">Hủy</button>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+        $(document).ready(function() {
+            // Search functionality
+            $('.search-container button').click(function() {
+                const searchTerm = $('.search-container input').val().toLowerCase();
+                $('tbody tr').each(function() {
+                    const title = $(this).find('td:nth-child(3)').text().toLowerCase();
+                    const genre = $(this).find('td:nth-child(4)').text().toLowerCase();
+                    if (title.includes(searchTerm) || genre.includes(searchTerm)) {
+                        $(this).show();
+                    } else {
+                        $(this).hide();
+                    }
+                });
+            });
+
+
+            //
+            // // Action buttons functionality
+            // $('.view-button').click(function() {
+            //     const movieName = $(this).closest('tr').find('td:nth-child(3)').text();
+            //     alert('Xem chi tiết phim: ' + movieName);
+            // });
+            //
+            // $('.edit-button').click(function() {
+            //     const movieName = $(this).closest('tr').find('td:nth-child(3)').text();
+            //     alert('Chỉnh sửa phim: ' + movieName);
+            // });
+            //
+            // $('.delete-button').click(function() {
+            //     const movieName = $(this).closest('tr').find('td:nth-child(3)').text();
+            //     if (confirm('Bạn có chắc chắn muốn xóa phim: ' + movieName + '?')) {
+            //         alert('Đã xóa phim: ' + movieName);
+            //     }
+            // });
+
+            // Pagination functionality
+            $('.page-controls .page-button').not(':first, :last').click(function() {
+                $('.page-controls .page-button').removeClass('active');
+                $(this).addClass('active');
+            });
+        });
+
+    </script>
+<script src="../asset/js/cinema.js"></script>
+</body>
+</html>

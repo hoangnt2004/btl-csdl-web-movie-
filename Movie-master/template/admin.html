@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Rạp Chiếu Phim</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../asset/css/admin.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="brand">
+            <span>Quản Lý Rạp Phim</span>
+            <i class="fas fa-bars"></i>
+        </div>
+
+        <div class="sidebar-category">QUẢN LÝ</div>
+        <ul class="sidebar-nav">
+
+            <li>
+                <a href="customer.html">
+                    <i class="fas fa-users"></i>
+                    <span>Khách Hàng</span>
+                </a>
+            </li>
+            <li >
+                <a href="admin.html" class="active">
+                    <i class="fas fa-film"></i>
+                    <span>Phim</span>
+                </a>
+            </li>
+            <li>
+                <a href="showtime.html">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>Xuất Chiếu</span>
+                </a>
+            </li>
+            <li>
+                <a href="cinema.html">
+                    <i class="fas fa-theater-masks"></i>
+                    <span>Rạp</span>
+                </a>
+            </li>
+            <li>
+                <a href="report.html">
+                    <i class="fas fa-chart-bar"></i>
+                    <span>Thống Kê</span>
+                </a>
+            </li>
+        </ul>
+
+
+    </div>
+    <!-- Main Content -->
+   <div class="container">
+       <button class="home-button">
+                <i class="fas fa-home"></i> Trang Chính
+            </button>
+
+        <div class="header">
+            <h1>Danh sách phim</h1>
+
+            <div class="search-container">
+                <input type="text" placeholder="Tìm kiếm phim...">
+                <button type="button">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+            <button class="add-button">
+                <i class="fas fa-plus"></i> Thêm phim mới
+            </button>
+
+        </div>
+        <div class="filter-container">
+            <label for="statusFilter">Lọc theo trạng thái:</label>
+            <select id="statusFilter">
+                <option value="">Tất cả</option>
+                <option value="NOW_SHOWING">Đang chiếu</option>
+                <option value="COMING_SOON">Sắp chiếu</option>
+                <option value="ENDED">Đã kết thúc</option>
+            </select>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Tên phim</th>
+                    <th>Thời lượng</th>
+                    <th>Ngày khởi chiếu</th>
+                    <th>Trạng thái</th>
+                    <th> Thao tác</th>
+                </tr>
+            </thead>
+            <tbody id="tbody">
+<!--                <tr>-->
+<!--                    <td>1</td>-->
+<!--                    <td>Avengers: Endgame</td>-->
+<!--                    <td>180 phút</td>-->
+<!--                    <td>25/03/2025</td>-->
+<!--                    <td><span class="status status-active">Đang chiếu</span></td>-->
+<!--                    <td>-->
+<!--                        <div class="action-buttons">-->
+<!--                            <button class="action-button view-button" title="Xem"><i class="fas fa-eye"></i></button>-->
+<!--                             <button class="action-button edit-button" title="Chỉnh sửa"><i class="fas fa-edit"></i></button>-->
+<!--                            <button class="action-button delete-button" title="Xóa"><i class="fas fa-trash-alt"></i></button>-->
+<!--                        </div>-->
+<!--                    </td>-->
+<!--                </tr>-->
+
+
+            </tbody>
+        </table>
+
+        <div class="pagination">
+            <div class="page-info">
+                <span id="page-summary">Hiển thị 1-9 của 25 phim</span>
+                <div class="page-size-container">
+                    <label for="pageSize">Hiển thị:</label>
+                    <select id="pageSize">
+                        <option value="5">5</option>
+                        <option value="10" selected>10</option>
+                        <option value="20">20</option>
+                        <option value="50">50</option>
+                    </select>
+                </div>
+            </div>
+            <div class="page-controls">
+                <button class="page-button prev-page" disabled><i class="fas fa-angle-left"></i></button>
+                <div id="pagination-numbers" class="pagination-numbers">
+                    <!-- Pagination numbers will be generated here -->
+                </div>
+                <button class="page-button next-page"><i class="fas fa-angle-right"></i></button>
+            </div>
+        </div>
+    </div>
+
+<div id="movieModal" class="modal">
+        <div class="modal-content" id="model-content">
+            <div class="modal-header">
+                <h2>Chi Tiết Phim</h2>
+
+            </div>
+            <div class="modal-body">
+                <div class="movie-poster">
+                    <img id="poster">
+                </div>
+                <div class="movie-info">
+                    <h1 id="title" class="movie-title"></h1>
+                    <div class="movie-meta">
+                        <div>
+                            <span class="meta-label">Thời lượng:</span>
+                            <span id="duration" class="meta-value"></span>
+                        </div>
+                        <div>
+                            <span class="meta-label">Thể loại:</span>
+                            <span id="genre" class="meta-value"></span>
+                        </div>
+                        <div>
+                            <span class="meta-label">Đạo diễn:</span>
+                            <span id="director" class="meta-value"></span>
+                        </div>
+                        <div>
+                            <span class="meta-label">Diễn viên:</span>
+                            <span id="cast" class="meta-value"></span>
+                        </div>
+<!--                        <div>-->
+<!--                            <span class="meta-label">Ngày khởi chiếu:</span>-->
+<!--                            <span id="releaseDate" class="meta-value"></span>-->
+<!--                        </div>-->
+                        <div>
+                            <span class="meta-label">Trạng thái:</span>
+                            <span id="status" class="meta-value"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="movie-synopsis">
+                    <h3 class="synopsis-heading">Nội Dung</h3>
+                    <p id="synopsis" class="synopsis-text">
+
+                    </p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="close">Đóng</button>
+            </div>
+        </div>
+    </div>
+<div id="editMovieModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Chỉnh sửa phim</h2>
+        </div>
+        <form id="editMovieForm" class="modal-body">
+            <label for="editName">Tên phim:</label>
+            <input type="text" id="editName" name="name" required>
+
+            <label for="editTime">Thời lượng (phút):</label>
+            <input type="number" id="editTime" name="time" min="1" required>
+
+            <label for="editDirector">Đạo diễn:</label>
+            <input type="text" id="editDirector" name="director">
+
+            <label for="editActor">Diễn viên:</label>
+            <input type="text" id="editActor" name="actor">
+
+            <label for="editOverview">Nội dung:</label>
+            <textarea id="editOverview" name="overview" rows="4"></textarea>
+
+            <label for="editState">Trạng thái:</label>
+            <select id="editState" name="state">
+                <option value="NOW_SHOWING">Đang chiếu</option>
+                <option value="COMING_SOON">Sắp chiếu</option>
+                <option value="ENDED">Đã kết thúc</option>
+            </select>
+
+            <label for="editGenres">Thể loại phim:</label>
+            <select id="editGenres" name="genres" multiple>
+                <option value="28">Hành động</option>
+                <option value="10749">Lãng Mạn</option>
+                <option value="35">Hài</option>
+                <option value="27">Kinh dị</option>
+                <option value="878">Khoa học viễn tưởng</option>
+                <option value="16">Hoạt hình</option>
+                <!-- thêm nếu cần -->
+            </select>
+        </form>
+        <div class="modal-footer">
+            <button type="submit" form="editMovieForm">Lưu thay đổi</button>
+            <button type="button" id="cancelEdit">Hủy</button>
+        </div>
+    </div>
+</div>
+    <!-- Modal thêm phim mới -->
+<div id="addMovieModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Thêm Phim Mới</h2>
+        </div>
+        <form id="addMovieForm" class="modal-body" enctype="multipart/form-data">
+            <label for="newName">Tên phim:</label>
+            <input type="text" id="newName" name="name" required>
+
+            <label for="newTime">Thời lượng (phút):</label>
+            <input type="number" id="newTime" name="time" min="1" required>
+
+            <label for="newDirector">Đạo diễn:</label>
+            <input type="text" id="newDirector" name="director">
+
+            <label for="newActor">Diễn viên:</label>
+            <input type="text" id="newActor" name="actor">
+
+            <label for="newOverview">Nội dung:</label>
+            <textarea id="newOverview" name="overview" rows="4"></textarea>
+
+            <label for="newState">Trạng thái:</label>
+            <select id="newState" name="state">
+                <option value="COMING_SOON">Sắp chiếu</option>
+                <option value="NOW_SHOWING">Đang chiếu</option>
+                <option value="ENDED">Đã kết thúc</option>
+            </select>
+
+            <label for="newTypes">Thể loại phim:</label>
+            <select id="newTypes" name="id_type" multiple>
+                <option value="28">Hành động</option>
+                <option value="10749">Lãng Mạn</option>
+                <option value="35">Hài</option>
+                <option value="27">Kinh dị</option>
+                <option value="878">Khoa học viễn tưởng</option>
+                <option value="16">Hoạt hình</option>
+            </select>
+
+            <label for="newTimeRelease">Ngày khởi chiếu:</label>
+            <input type="datetime-local" id="newTimeRelease" name="time_release" required>
+
+            <label for="newPoster">Ảnh poster:</label>
+            <input type="file" id="newPoster" name="poster" accept="image/*">
+
+            <label for="newBanner">Ảnh banner:</label>
+            <input type="file" id="newBanner" name="banner" accept="image/*">
+        </form>
+
+        <div class="modal-footer">
+            <button type="submit" form="addMovieForm">Thêm phim</button>
+            <button type="button" id="cancelAdd">Hủy</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('#editGenres').select2({
+            placeholder: "Chọn thể loại phim",
+            width: '100%',
+            allowClear: true
+        });
+    });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</body>
+
+
+<script>
+        $(document).ready(function() {
+            // Search functionality
+            $('.search-container button').click(function() {
+                const searchTerm = $('.search-container input').val().toLowerCase();
+                $('tbody tr').each(function() {
+                    const title = $(this).find('td:nth-child(3)').text().toLowerCase();
+                    const genre = $(this).find('td:nth-child(4)').text().toLowerCase();
+                    if (title.includes(searchTerm) || genre.includes(searchTerm)) {
+                        $(this).show();
+                    } else {
+                        $(this).hide();
+                    }
+                });
+            });
+
+
+            // Pagination functionality
+            $('.page-controls .page-button').not(':first, :last').click(function() {
+                $('.page-controls .page-button').removeClass('active');
+                $(this).addClass('active');
+            });
+        });
+    </script>
+<script src="../asset/js/movie.js"></script>
+</html>

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PCINEMA - Phim đang chiếu</title>
+  <link rel="stylesheet" href="../asset/css/nowShowing.css">
+  <link rel="stylesheet" href="../asset/css/auth.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="header">
+    <div class="left-section">
+      <div class="logo"><a href="home.html">PCINEMA</a></div>
+      <div class="nav-left">
+        <ul>
+          <li><a href="nowShowing.html">Phim đang chiếu</a></li>
+          <li><a href="commingSoon.html">Phim sắp ra mắt</a></li>
+          <li><a href="event.html">Sự kiện / khuyến mãi</a></li>
+          <li><a href="about.html">Về PCINEMA</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="nav-right">
+      <form action="#" method="GET" class="search-form">
+        <input type="text" placeholder="Tìm kiếm..." name="search">
+        <button type="submit">Tìm</button>
+      </form>
+      <ul id="auth_menu">
+
+      </ul>
+    </div>
+  </header>
+
+  <!-- Khoảng trống cho header fixed -->
+  <div style="height:80px;"></div>
+
+  <!-- Nội dung chính -->
+  <div class="container">
+    <!-- PHIM MỚI RA MẮT (Static) -->
+<!--    <div class="movie-section">-->
+<!--      <div class="section-header">-->
+<!--        <h2>PHIM MỚI RA MẮT</h2>-->
+<!--      </div>-->
+<!--      <div class="movie-slider-wrapper" id="slider-moi">-->
+<!--        <div class="arrow arrow-left" id="prev-moi">&#10094;</div>-->
+<!--        <div class="movie-slider">-->
+<!--          <div class="movie-card">-->
+<!--            <img src="../asset/image/post (30).jpg" alt="Phim mới 1">-->
+<!--            <div class="overlay"><span>Đặt vé</span></div>-->
+<!--            <div class="info"><h3>Phim mới 1</h3></div>-->
+<!--          </div>-->
+<!--          <div class="movie-card">-->
+<!--            <img src="../asset/image/post (31).jpg" alt="Phim mới 2">-->
+<!--            <div class="overlay"><span>Đặt vé</span></div>-->
+<!--            <div class="info"><h3>Phim mới 2</h3></div>-->
+<!--          </div>-->
+<!--          <div class="movie-card">-->
+<!--            <img src="../asset/image/post (33).jpg" alt="Phim mới 3">-->
+<!--            <div class="overlay"><span>Đặt vé</span></div>-->
+<!--            <div class="info"><h3>Phim mới 3</h3></div>-->
+<!--          </div>-->
+<!--          <div class="movie-card">-->
+<!--            <img src="../asset/image/post (35).jpg" alt="Phim mới 4">-->
+<!--            <div class="overlay"><span>Đặt vé</span></div>-->
+<!--            <div class="info"><h3>Phim mới 4</h3></div>-->
+<!--          </div>-->
+<!--          <div class="movie-card">-->
+<!--            <img src="../asset/image/post (33).jpg" alt="Phim mới 5">-->
+<!--            <div class="overlay"><span>Đặt vé</span></div>-->
+<!--            <div class="info"><h3>Phim mới 5</h3></div>-->
+<!--          </div>-->
+<!--          <div class="movie-card">-->
+<!--            <img src="../asset/image/post (38).jpg" alt="Phim mới 6">-->
+<!--            <div class="overlay"><span>Đặt vé</span></div>-->
+<!--            <div class="info"><h3>Phim mới 6</h3></div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="arrow arrow-right" id="next-moi">&#10095;</div>-->
+<!--      </div>-->
+<!--      <div class="slider-dots" id="dots-moi"></div>-->
+<!--    </div>-->
+
+
+    <!-- PHIM HÀNH ĐỘNG (Dynamic: AJAX) -->
+    <div class="movie-section">
+      <div class="section-header">
+        <h2>PHIM HÀNH ĐỘNG</h2>
+      </div>
+      <div class="movie-slider-wrapper" id="slider-hanhdong">
+        <div class="arrow arrow-left" id="prev-hanhdong">&#10094;</div>
+        <div class="movie-slider" id="hanhdong">
+          <!-- Các movie-card sẽ được load qua AJAX -->
+        </div>
+        <div class="arrow arrow-right" id="next-hanhdong">&#10095;</div>
+      </div>
+      <div class="slider-dots" id="dots-hanhdong"></div>
+    </div>
+    <div class="movie-section">
+      <div class="section-header">
+        <h2>PHIM HOẠT HINH</h2>
+      </div>
+      <div class="movie-slider-wrapper" id="slider-hoathinh">
+        <div class="arrow arrow-left" id="prev-hoathinh">&#10094;</div>
+        <div class="movie-slider" id="hoathinh">
+          <!-- Các movie-card sẽ được load qua AJAX -->
+        </div>
+        <div class="arrow arrow-right" id="next-hoathinh">&#10095;</div>
+      </div>
+      <div class="slider-dots" id="dots-hoathinh"></div>
+    </div>
+
+    <!-- PHIM HÀI (Dynamic: AJAX) -->
+    <div class="movie-section">
+      <div class="section-header">
+        <h2>PHIM HÀI</h2>
+      </div>
+      <div class="movie-slider-wrapper" id="slider-hai">
+        <div class="arrow arrow-left" id="prev-hai">&#10094;</div>
+        <div class="movie-slider" id="hai">
+          <!-- Các movie-card sẽ được load qua AJAX -->
+        </div>
+        <div class="arrow arrow-right" id="next-hai">&#10095;</div>
+      </div>
+      <div class="slider-dots" id="dots-hai"></div>
+    </div>
+
+    <!-- PHIM GIA ĐÌNH (Dynamic: AJAX) -->
+    <div class="movie-section">
+      <div class="section-header">
+        <h2>PHIM GIA ĐÌNH</h2>
+      </div>
+      <div class="movie-slider-wrapper" id="slider-giadinh">
+        <div class="arrow arrow-left" id="prev-giadinh">&#10094;</div>
+        <div class="movie-slider" id="giadinh">
+          <!-- Các movie-card sẽ được load qua AJAX -->
+        </div>
+        <div class="arrow arrow-right" id="next-giadinh">&#10095;</div>
+      </div>
+      <div class="slider-dots" id="dots-giadinh"></div>
+    </div>
+
+    <!-- PHIM KINH DỊ (Dynamic: AJAX) -->
+    <div class="movie-section">
+      <div class="section-header">
+        <h2>PHIM KINH DỊ</h2>
+      </div>
+      <div class="movie-slider-wrapper" id="slider-kinhdi">
+        <div class="arrow arrow-left" id="prev-kinhdi">&#10094;</div>
+        <div class="movie-slider" id="kinhdi">
+          <!-- Các movie-card sẽ được load qua AJAX -->
+        </div>
+        <div class="arrow arrow-right" id="next-kinhdi">&#10095;</div>
+      </div>
+      <div class="slider-dots" id="dots-kinhdi"></div>
+    </div>
+
+    <!-- PHIM LÃNG MẠN (Dynamic: AJAX) -->
+    <div class="movie-section">
+      <div class="section-header">
+        <h2>PHIM LÃNG MẠN</h2>
+      </div>
+      <div class="movie-slider-wrapper" id="slider-langman">
+        <div class="arrow arrow-left" id="prev-langman">&#10094;</div>
+        <div class="movie-slider" id="langman">
+          <!-- Các movie-card sẽ được load qua AJAX -->
+        </div>
+        <div class="arrow arrow-right" id="next-langman">&#10095;</div>
+      </div>
+      <div class="slider-dots" id="dots-langman"></div>
+    </div>
+
+    <!-- PHIM KHOA HỌC VIỄN TƯỞNG (Dynamic: AJAX) -->
+    <div class="movie-section">
+      <div class="section-header">
+        <h2>PHIM KHOA HỌC VIỄN TƯỞNG</h2>
+      </div>
+      <div class="movie-slider-wrapper" id="slider-khoahoc">
+        <div class="arrow arrow-left" id="prev-khoahoc">&#10094;</div>
+        <div class="movie-slider" id="khoahoc">
+          <!-- Các movie-card sẽ được load qua AJAX -->
+        </div>
+        <div class="arrow arrow-right" id="next-khoahoc">&#10095;</div>
+      </div>
+      <div class="slider-dots" id="dots-khoahoc"></div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Quy định và chính sách chung</h3>
+        <p>Hotline: 19002099</p>
+        <p>Giờ làm việc: 7:00 - 23:00 (bao gồm cả Lễ, Tết)</p>
+        <p>Email hỗ trợ: <a href="mailto:cskh@ptit.vn">cskh@ptit.vn</a></p>
+      </div>
+      <div class="footer-section">
+        <h3>Liên Hệ</h3>
+        <p>Hệ Thống Rạp</p>
+        <p>Quy định và điều khoản</p>
+        <p>Về PCINEMA</p>
+        <p>Chăm sóc khách hàng</p>
+      </div>
+      <div class="footer-section">
+        <h3>Thông tin thêm</h3>
+        <p>Cụm Rạp</p>
+        <p>Hướng dẫn đặt vé trực tuyến</p>
+        <p>Quy định thành viên</p>
+        <p>Điều khoản</p>
+      </div>
+    </div>
+  </footer>
+
+
+</body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"> </script>
+<script src="../asset/js/nowShowing.js"></script>
+<script type="module" src="../asset/js/auth.js"></script>
+</html>

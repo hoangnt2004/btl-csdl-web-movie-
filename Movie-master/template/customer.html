@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Khách Hàng</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../asset/css/admin.css">
+
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="brand">
+            <span>Quản Lý Rạp Phim</span>
+            <i class="fas fa-bars"></i>
+        </div>
+
+        <div class="sidebar-category">QUẢN LÝ</div>
+        <ul class="sidebar-nav">
+
+            <li>
+                <a href="customer.html" class="active">
+                    <i class="fas fa-users"></i>
+                    <span>Khách Hàng</span>
+                </a>
+            </li>
+            <li >
+                <a href="admin.html" >
+                    <i class="fas fa-film"></i>
+                    <span>Phim</span>
+                </a>
+            </li>
+            <li>
+                <a href="showtime.html">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>Xuất Chiếu</span>
+                </a>
+            </li>
+            <li>
+                <a href="cinema.html">
+                    <i class="fas fa-theater-masks"></i>
+                    <span>Rạp</span>
+                </a>
+            </li>
+            <li>
+                <a href="report.html">
+                    <i class="fas fa-chart-bar"></i>
+                    <span>Thống Kê</span>
+                </a>
+            </li>
+        </ul>
+
+
+    </div>
+    <!-- Main Content -->
+   <div class="container">
+       <button class="home-button">
+                <i class="fas fa-home"></i> Trang Chính
+            </button>
+
+        <div class="header">
+            <h1>Danh sách khách hàng</h1>
+
+            <div class="search-container">
+                <input type="text" placeholder="Tìm kiếm Khách Hàng...">
+                <button type="button">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+            <button class="add-button">
+                <i class="fas fa-plus"></i> Thêm khách hàng mới
+            </button>
+
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Họ và Tên</th>
+                    <th>Email</th>
+                    <th>Số điện thoại</th>
+                    <th> Thao tác</th>
+                </tr>
+            </thead>
+            <tbody>
+<!--                <tr>-->
+<!--                    <td>1</td>-->
+<!--                    <td>Nguyễn Văn A</td>-->
+<!--                    <td>A@gmail.com</td>-->
+<!--                    <td>0123456789</td>-->
+<!--                    <td>-->
+<!--                        <div class="action-buttons">-->
+<!--                             <button class="action-button edit-button" title="Chỉnh sửa"><i class="fas fa-edit"></i></button>-->
+<!--                            <button class="action-button delete-button" title="Xóa"><i class="fas fa-trash-alt"></i></button>-->
+<!--                        </div>-->
+<!--                    </td>-->
+<!--                </tr>-->
+
+
+            </tbody>
+        </table>
+
+        <div class="pagination">
+            <div class="page-info">
+                <span id="page-summary">Hiển thị 1-9 của 25 khách hàng</span>
+                <div class="page-size-container">
+                    <label for="pageSize">Hiển thị:</label>
+                    <select id="pageSize">
+                        <option value="5">5</option>
+                        <option value="10" selected>10</option>
+                        <option value="20">20</option>
+                        <option value="50">50</option>
+                    </select>
+                </div>
+            </div>
+            <div class="page-controls">
+                <button class="page-button prev-page" disabled><i class="fas fa-angle-left"></i></button>
+                <div id="pagination-numbers" class="pagination-numbers">
+                    <!-- Pagination numbers will be generated here -->
+                </div>
+                <button class="page-button next-page"><i class="fas fa-angle-right"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Adding New Customer -->
+    <div id="addCustomerModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Thêm Khách Hàng Mới</h2>
+            </div>
+            <form id="addCustomerForm" class="modal-body">
+                <label for="customerName">Tên khách hàng:</label>
+                <input type="text" id="customerName" name="name" required>
+
+                <label for="customerEmail">Email:</label>
+                <input type="email" id="customerEmail" name="email" required>
+
+                <label for="customerPhone">Số điện thoại:</label>
+                <input type="text" id="customerPhone" name="phone" required>
+                <label for="customerPhone">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </form>
+            <div class="modal-footer">
+                <button type="submit" form="addCustomerForm">Thêm mới</button>
+                <button type="button" id="cancelAddCustomer">Hủy</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Editing Customer Information -->
+    <div id="editCustomerModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Sửa Thông Tin Khách Hàng</h2>
+            </div>
+            <form id="editCustomerForm" class="modal-body">
+                <label for="editCustomerName">Tên khách hàng:</label>
+                <input type="text" id="editCustomerName" name="name" required>
+
+                <label for="editCustomerEmail">Email:</label>
+                <input type="email" id="editCustomerEmail" name="email" required>
+
+                <label for="editCustomerPhone">Số điện thoại:</label>
+                <input type="text" id="editCustomerPhone" name="phone" required>
+            </form>
+            <div class="modal-footer">
+                <button type="submit" form="editCustomerForm">Lưu thay đổi</button>
+                <button type="button" id="cancelEditCustomer">Hủy</button>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        $(document).ready(function() {
+            // Toggle sidebar
+            $('.brand i').click(function() {
+                $('body').toggleClass('sidebar-collapsed');
+                $('.sidebar').toggleClass('collapsed');
+            });
+
+
+
+            // Home button functionality
+            $('.home-button').click(function() {
+                window.location.href="./home.html"
+            });
+
+            // Simulate loading data for the table (would be replaced with actual AJAX)
+            setTimeout(function() {
+                var tableHTML = `
+                <table style="width: 100%; border-collapse: collapse;">
+                    <thead>
+                        <tr style="background-color: #f8f9fa;">
+                            <th style="padding: 12px; text-align: left; border-bottom: 1px solid #dee2e6;">Tên Phim</th>
+                            <th style="padding: 12px; text-align: left; border-bottom: 1px solid #dee2e6;">Thể Loại</th>
+                            <th style="padding: 12px; text-align: left; border-bottom: 1px solid #dee2e6;">Thời Lượng</th>
+                            <th style="padding: 12px; text-align: left; border-bottom: 1px solid #dee2e6;">Ngày Khởi Chiếu</th>
+                            <th style="padding: 12px; text-align: left; border-bottom: 1px solid #dee2e6;">Trạng Thái</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="padding: 12px; border-bottom: 1px solid #dee2e6;">Avengers: Endgame</td>
+                            <td style="padding: 12px; border-bottom: 1px solid #dee2e6;">Hành Động, Viễn Tưởng</td>
+                            <td style="padding: 12px; border-bottom: 1px solid #dee2e6;">180 phút</td>
+                            <td style="padding: 12px; border-bottom: 1px solid #dee2e6;">25/03/2025</td>
+                            <td style="padding: 12px; border-bottom: 1px solid #dee2e6;"><span style="background-color: #198754; color: white; padding: 3px 8px; border-radius: 4px;">Đang chiếu</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 12px; border-bottom: 1px solid #dee2e6;">Spider-Man: Across the Spider-Verse</td>
+                            <td style="padding: 12px; border-bottom: 1px solid #dee2e6;">Hoạt Hình, Phiêu Lưu</td>
+                            <td style="padding: 12px; border-bottom: 1px solid #dee2e6;">140 phút</td>
+                            <td style="padding: 12px; border-bottom: 1px solid #dee2e6;">01/04/2025</td>
+                            <td style="padding: 12px; border-bottom: 1px solid #dee2e6;"><span style="background-color: #ffc107; color: black; padding: 3px 8px; border-radius: 4px;">Sắp chiếu</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 12px; border-bottom: 1px solid #dee2e6;">The Batman</td>
+                            <td style="padding: 12px; border-bottom: 1px solid #dee2e6;">Hành Động, Tội Phạm</td>
+                            <td style="padding: 12px; border-bottom: 1px solid #dee2e6;">176 phút</td>
+                            <td style="padding: 12px; border-bottom: 1px solid #dee2e6;">15/03/2025</td>
+                            <td style="padding: 12px; border-bottom: 1px solid #dee2e6;"><span style="background-color: #198754; color: white; padding: 3px 8px; border-radius: 4px;">Đang chiếu</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 12px; border-bottom: 1px solid #dee2e6;">Mắt Biếc</td>
+                            <td style="padding: 12px; border-bottom: 1px solid #dee2e6;">Tình Cảm, Lãng Mạn</td>
+                            <td style="padding: 12px; border-bottom: 1px solid #dee2e6;">117 phút</td>
+                            <td style="padding: 12px; border-bottom: 1px solid #dee2e6;">10/03/2025</td>
+                            <td style="padding: 12px; border-bottom: 1px solid #dee2e6;"><span style="background-color: #dc3545; color: white; padding: 3px 8px; border-radius: 4px;">Kết thúc</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+                `;
+
+                $('#data-table').html(tableHTML);
+            }, 1000);
+        });
+    </script>
+<script>
+        $(document).ready(function() {
+            // Search functionality
+            $('.search-container button').click(function() {
+                const searchTerm = $('.search-container input').val().toLowerCase();
+                $('tbody tr').each(function() {
+                    const title = $(this).find('td:nth-child(3)').text().toLowerCase();
+                    const genre = $(this).find('td:nth-child(4)').text().toLowerCase();
+                    if (title.includes(searchTerm) || genre.includes(searchTerm)) {
+                        $(this).show();
+                    } else {
+                        $(this).hide();
+                    }
+                });
+            });
+
+
+            // Pagination functionality
+            $('.page-controls .page-button').not(':first, :last').click(function() {
+                $('.page-controls .page-button').removeClass('active');
+                $(this).addClass('active');
+            });
+        });
+    </script>
+<script src="../asset/js/customer.js"></script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PCINEMA - Trang chủ</title>
+  <link rel="stylesheet" href="../asset/css/home_style.css">
+  <link rel="stylesheet" href="../asset/css/auth.css">
+</head>
+<body>
+
+  <!-- Header (Fixed) -->
+  <header class="header">
+    <div class="left-section">
+      <div class="logo"><a href="home.html">PCINEMA</a></div>
+      <div class="nav-left">
+        <ul>
+<!--          <li><a href="#">Thể Loại</a></li>-->
+          <li><a href="nowShowing.html">Phim đang chiếu</a></li>
+          <li><a href="commingSoon.html">Phim sắp ra mắt</a></li>
+          <li><a href="event.html">Sự kiện / khuyến mãi</a></li>
+          <li><a href="about.html">Về PCINEMA</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="nav-right">
+      <form action="#" method="GET" class="search-form">
+      <input type="text" placeholder="Tìm kiếm..." name="search" />
+      <button type="submit">Tìm</button>
+       </form>
+      <ul id="auth_menu">
+
+      </ul>
+    </div>
+  </header>
+
+  <!-- Khoảng trống cho header fixed -->
+  <div style="height:80px;"></div>
+
+  <!-- Slider: Banner phim -->
+  <div class="slider">
+    <div class="arrow arrow-left" id="prevBtn">&#10094;</div>
+    <div class="arrow arrow-right" id="nextBtn">&#10095;</div>
+  </div>
+
+  <!-- Nội dung chính -->
+  <div class="container">
+    <!-- PHIM MỚI RA MẮT -->
+    <div class="movie-section">
+      <div class="section-header">
+        <h2>PHIM MỚI RA MẮT</h2>
+        <a href="nowShowing.html" class="more-link">Xem thêm</a>
+      </div>
+      <div class="movie-slider-wrapper" id="slider-new">
+        <div class="arrow arrow-left" id="prev-new">&#10094;</div>
+        <div class="movie-slider new-slider" id="new">
+
+        </div>
+        <div class="arrow arrow-right" id="next-new">&#10095;</div>
+        <div class="slider-dots" id="dots-new"></div>
+      </div>
+    </div>
+
+    <!-- PHIM ĐANG HOT -->
+    <div class="movie-section">
+      <div class="section-header">
+        <h2>PHIM HOT</h2>
+        <a href="nowShowing.html" class="more-link">Xem thêm</a>
+      </div>
+      <div class="movie-slider-wrapper" id="slider-hot">
+        <div class="arrow arrow-left" id="prev-hot">&#10094;</div>
+        <div class="movie-slider new-slider" id="hot">
+
+        </div>
+        <div class="arrow arrow-right" id="next-hot">&#10095;</div>
+        <div class="slider-dots" id="dots-hot"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Quy định và chính sách chung</h3>
+        <p>Hotline: 19002099</p>
+        <p>Giờ làm việc: 7:00 - 23:00 (bao gồm cả Lễ, Tết)</p>
+        <p>Email hỗ trợ: <a href="mailto:cskh@ptit.vn">cskh@ptit.vn</a></p>
+      </div>
+      <div class="footer-section">
+        <h3>Liên Hệ</h3>
+        <p>Hệ Thống Rạp</p>
+        <p>Quy định và điều khoản</p>
+        <p>Về PCINEMA</p>
+        <p>Chăm sóc khách hàng</p>
+      </div>
+      <div class="footer-section">
+        <h3>Thông tin thêm</h3>
+        <p>Cụm Rạp</p>
+        <p>Hướng dẫn đặt vé trực tuyến</p>
+        <p>Quy định thành viên</p>
+        <p>Điều khoản</p>
+      </div>
+    </div>
+  </footer>
+
+
+
+
+</body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="../asset/js/home.js"></script>
+<script type="module" src="../asset/js/auth.js"></script>
+</html>
+

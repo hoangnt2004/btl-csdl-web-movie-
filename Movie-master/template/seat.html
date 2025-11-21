@@ -1,0 +1,201 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Đặt ghế & Thanh toán - PCINEMA</title>
+  <link rel="stylesheet" href="../asset/css/footer.css">
+  <link rel="stylesheet" href="../asset/css/navbar.css">
+  <link rel="stylesheet" href="../asset/css/seat.css">
+<link rel="stylesheet" href="../asset/css/auth.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="left-section">
+      <div class="logo"><a href="home.html">PCINEMA</a></div>
+      <div class="nav-left">
+        <ul>
+          <!-- <li><a href="#">Thể Loại</a></li> -->
+          <li><a href="nowShowing.html">Phim đang chiếu</a></li>
+          <li><a href="commingSoon.html">Phim sắp ra mắt</a></li>
+          <li><a href="event.html">Sự kiện / khuyến mãi</a></li>
+          <li><a href="about.html">Về PCINEMA</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="nav-right">
+      <form action="#" method="GET" class="search-form">
+        <input type="text" placeholder="Tìm kiếm..." name="search" />
+        <button type="submit">Tìm</button>
+      </form>
+      <ul id="auth_menu">
+
+      </ul>
+    </div>
+  </header>
+
+  <!-- Phần thông tin phim -->
+  <div class="movie-detail">
+    <h1 class="movie-title"></h1>
+<!--    <div class="movie-info">-->
+<!--      <p><strong>Nội dung:</strong> Sau khi Po được chọn trở thành Thủ lĩnh tinh thần của Thung lũng Bình Yên, Po cần tìm và huấn luyện một Chiến binh Rồng mới, trong khi đó một mụ phù thủy độc ác lên kế hoạch triệu hồi lại tất cả những kẻ phản diện mà Po đã đánh bại về cõi linh hồn.</p>-->
+<!--      <p><strong>Diễn viên:</strong> (Đang cập nhật)</p>-->
+<!--      <p><strong>Đạo diễn:</strong> (Đang cập nhật)</p>-->
+<!--      <p><strong>Thể loại:</strong> Phim hoạt hình</p>-->
+<!--      <p><strong>Ngôn ngữ:</strong> Phụ đề tiếng Việt</p>-->
+<!--      <p><strong>Thời lượng:</strong> 94 phút</p>-->
+<!--    </div>-->
+  </div>
+
+  <!-- Phần chọn suất chiếu -->
+  <div class="showtime-container">
+    <h3>Chọn suất chiếu và ghế</h3>
+    <div class="showtime-section">
+      <label>Chọn rạp:</label>
+      <!-- Nút chọn rạp -->
+<!--      <button class="cinema-button" id="toggleCinemaList">Chọn rạp</button>-->
+      <div class="cinema-buttons" id="cinemaButtons">
+<!--        <button>Rạp 1</button>-->
+<!--        <button>Rạp 2</button>-->
+<!--        <button>Rạp 3</button>-->
+      </div>
+    </div>
+    <div class="showtime-section">
+      <label>Chọn ngày:</label>
+      <div class="showtime-buttons" id="dateButtons">
+<!--        <button>15/03/2025</button>-->
+<!--        <button>16/03/2025</button>-->
+<!--        <button>17/03/2025</button>-->
+      </div>
+    </div>
+    <div class="showtime-section">
+      <label>Chọn giờ:</label>
+      <div class="showtime-buttons" id="timeButtons">
+<!--        <button class="active">14:30</button>-->
+<!--        <button>16:30</button>-->
+<!--        <button>18:30</button>-->
+      </div>
+    </div>
+  </div>
+
+  <!-- Phần chọn ghế -->
+  <div class="seat-selection-container">
+    <h3>Chọn ghế</h3>
+    <div class="seat-map" id="seatMap">
+
+    </div>
+    <!-- Legend cho ghế -->
+    <div class="legend">
+      <div class="legend-item"><div class="legend-color" style="background-color: #5c9836;"></div>Ghế đã chọn</div>
+      <div class="legend-item"><div class="legend-color" style="background-color: #ccc;"></div>Ghế đã đặt</div>
+      <div class="legend-item"><div class="legend-color" style="background-color: #ffb6c1;"></div>Ghế thường</div>
+      <div class="legend-item"><div class="legend-color" style="background-color: #add8e6;"></div>Ghế VIP</div>
+    </div>
+  </div>
+
+  <!-- Phần chọn đồ ăn -->
+  <section class="food-order">
+    <h3>CHỌN ĐỒ ĂN</h3>
+    <div class="food-items">
+<!--      <div class="food-item" data-price="30000">-->
+<!--        <div class="food-name">NƯỚC NGỌT</div>-->
+<!--        <div class="quantity-selector">-->
+<!--          <button class="minus">-</button>-->
+<!--          <span class="quantity">0</span>-->
+<!--          <button class="plus">+</button>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="food-item" data-price="40000">-->
+<!--        <div class="food-name">BỎNG NGÔ</div>-->
+<!--        <div class="quantity-selector">-->
+<!--          <button class="minus">-</button>-->
+<!--          <span class="quantity">0</span>-->
+<!--          <button class="plus">+</button>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="food-item" data-price="70000">-->
+<!--        <div class="food-name">COMBO: NƯỚC + BỎNG</div>-->
+<!--        <div class="quantity-selector">-->
+<!--          <button class="minus">-</button>-->
+<!--          <span class="quantity">0</span>-->
+<!--          <button class="plus">+</button>-->
+<!--        </div>-->
+<!--      </div>-->
+    </div>
+  </section>
+
+  <!-- Phần thanh toán chung (bao gồm tiền vé + tiền đồ ăn) -->
+  <div class="payment-summary">
+    <div class="total-price">THANH TOÁN: 0 VND</div>
+    <button class="payment-button">Thanh Toán</button>
+  </div>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Quy định và chính sách chung</h3>
+        <p>Hotline: 19002099</p>
+        <p>Giờ làm việc: 7:00 - 23:00 (bao gồm cả Lễ, Tết)</p>
+        <p>Email hỗ trợ: <a href="mailto:cskh@ptit.vn">cskh@ptitptit.vn</a></p>
+      </div>
+      <div class="footer-section">
+        <h3>Liên Hệ</h3>
+        <p>Hệ Thống Rạp</p>
+        <p>Quy định và điều khoản</p>
+        <p>Về PCINEMA</p>
+        <p>Chăm sóc khách hàng</p>
+      </div>
+      <div class="footer-section">
+        <h3>Thông tin thêm</h3>
+        <p>Cụm Rạp</p>
+        <p>Hướng dẫn đặt vé trực tuyến</p>
+        <p>Quy định thành viên</p>
+        <p>Điều khoản</p>
+      </div>
+    </div>
+  </footer>
+
+<div class="confirm-box" id="confirmBox" style="display: none;">
+<!--  <div class="confirm-content">-->
+<!--    <span id="closeConfirmBox" style="float: right; font-size: 20px; cursor: pointer;">&times;</span>-->
+<!--    <h2 style="text-align:center; margin-bottom: 20px;">Xác nhận đặt vé</h2>-->
+<!--    <div id="confirmSeats"></div>-->
+<!--    <div id="confirmFoods" style="margin-top: 10px;"></div>-->
+<!--    <div id="confirmTotal" style="margin-top: 15px; font-weight: bold; font-size: 18px;"></div>-->
+<!--    <button id="confirmPaymentBtn" >Xác nhận thanh toán</button>-->
+<!--  </div>-->
+
+ <div class="confirm-content" style="display: flex; gap: 30px;">
+  <div style="flex: 2;">
+    <span id="closeConfirmBox" style="float: right; font-size: 20px; cursor: pointer;">&times;</span>
+    <h2 style="text-align:center; margin-bottom: 20px;">Xác nhận đặt vé</h2>
+    <div id="confirmSeats"></div>
+    <div id="confirmFoods" style="margin-top: 10px;"></div>
+    <div id="confirmTotal" style="margin-top: 15px; font-weight: bold; font-size: 18px;"></div>
+
+  </div>
+
+  <div style="flex: 1; display: flex; align-items: center;">
+    <img id="qr"
+         alt="QR thanh toán"
+         style="max-width: 100%; height: auto; border: 1px solid #ccc; border-radius: 8px;" />
+  </div>
+</div>
+</div>
+
+<div id="paymentToastCenter" class="toast-center">✔️ Xác nhận thanh toán thành công!</div>
+
+
+
+
+
+
+</body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script type="module" src="../asset/js/auth.js"></script>
+  <script src="../asset/js/seat.js">
+
+  </script>
+</html>

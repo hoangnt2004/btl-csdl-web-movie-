@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Chi tiết</title>
+    <link rel="stylesheet" href="../asset/css/footer.css">
+    <link rel="stylesheet" href="../asset/css/navbar.css">
+    <link rel="stylesheet" href="../asset/css/detail.css">
+    <link rel="stylesheet" href="../asset/css/auth.css">
+</head>
+<body>
+<header class="header">
+    <div class="left-section">
+      <div class="logo"><a href="home.html">PCINEMA</a></div>
+      <div class="nav-left">
+        <ul>
+          <li><a href="nowShowing.html">Phim đang chiếu</a></li>
+          <li><a href="commingSoon.html">Phim sắp ra mắt</a></li>
+          <li><a href="event.html">Sự kiện / khuyến mãi</a></li>
+          <li><a href="about.html">Về PCINEMA</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="nav-right">
+      <form action="#" method="GET" class="search-form">
+      <input type="text" placeholder="Tìm kiếm..." name="search" />
+      <button type="submit">Tìm</button>
+       </form>
+      <ul id="auth_menu">
+
+      </ul>
+    </div>
+  </header>
+
+  <!-- Khoảng trống cho header fixed -->
+  <div style="height:80px;"></div>
+  <div class="movie-detail">
+    <div class="movie-info-container">
+      <!-- Phần poster -->
+      <div class="movie-poster">
+      </div>
+      <!-- Phần thông tin phim -->
+      <div class="movie-info-text">
+        <div class="movie-info">
+        </div>
+        <div class="movie-actions">
+        </div>
+      </div>
+    </div>
+
+    <!-- Trailer phim -->
+    <div class="movie-trailer">
+      <h3 class="trailer-title">Trailer phim</h3>
+      <div class="trailer-wrapper" id="movieTrailer">
+        <!-- Iframe trailer sẽ được thêm bằng JS nếu có trailer_url -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Phần đánh giá phim -->
+  <div class="rating-section-container">
+    <h2>Đánh giá phim</h2>
+    <div class="movie-rating-summary">
+      <div class="average-score">
+        <div class="score-display">0.0</div>
+        <div class="star-display-large"></div>
+        <div class="total-ratings">0 đánh giá</div>
+      </div>
+      <div class="rating-distribution">
+        <div class="rating-bar">
+          <span class="star-label">5 <span class="star-icon">★</span></span>
+          <div class="progress-bar"><div class="progress" style="width: 0%"></div></div>
+          <span class="percentage">0%</span>
+        </div>
+        <div class="rating-bar">
+          <span class="star-label">4 <span class="star-icon">★</span></span>
+          <div class="progress-bar"><div class="progress" style="width: 0%"></div></div>
+          <span class="percentage">0%</span>
+        </div>
+        <div class="rating-bar">
+          <span class="star-label">3 <span class="star-icon">★</span></span>
+          <div class="progress-bar"><div class="progress" style="width: 0%"></div></div>
+          <span class="percentage">0%</span>
+        </div>
+        <div class="rating-bar">
+          <span class="star-label">2 <span class="star-icon">★</span></span>
+          <div class="progress-bar"><div class="progress" style="width: 0%"></div></div>
+          <span class="percentage">0%</span>
+        </div>
+        <div class="rating-bar">
+          <span class="star-label">1 <span class="star-icon">★</span></span>
+          <div class="progress-bar"><div class="progress" style="width: 0%"></div></div>
+          <span class="percentage">0%</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="user-rating-container">
+      <h3>Đánh giá của bạn</h3>
+      <div class="user-rating">
+        <div class="star-rating">
+          <span class="star" data-rating="1">★</span>
+          <span class="star" data-rating="2">★</span>
+          <span class="star" data-rating="3">★</span>
+          <span class="star" data-rating="4">★</span>
+          <span class="star" data-rating="5">★</span>
+        </div>
+        <form class="rating-form">
+          <textarea placeholder="Chia sẻ ý kiến của bạn về bộ phim này (tùy chọn)..." rows="3"></textarea>
+          <button type="submit" class="submit-rating">Gửi đánh giá</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="recent-ratings">
+      <h3>Đánh giá gần đây</h3>
+      <div id="reviewsContainer">
+        <!-- Các đánh giá sẽ được load động -->
+      </div>
+      <button id="loadMoreBtn" class="load-more">XEM THÊM ĐÁNH GIÁ</button>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Quy định và chính sách chung</h3>
+        <p>Hotline: 19002099</p>
+        <p>Giờ làm việc: 9:00 - 22:00 (bao gồm cả Lễ, Tết)</p>
+        <p>Email hỗ trợ: <a href="mailto:cskh@ptit.vn">cskh@ptit.vn</a></p>
+      </div>
+      <div class="footer-section">
+        <h3>Liên Hệ</h3>
+        <p>Hệ Thống Rạp</p>
+        <p>Quy định và điều khoản</p>
+        <p>Về PCINEMA</p>
+        <p>Chăm sóc khách hàng</p>
+      </div>
+      <div class="footer-section">
+        <h3>Thông tin thêm</h3>
+        <p>Cụm Rạp</p>
+        <p>Hướng dẫn đặt vé trực tuyến</p>
+        <p>Quy định thành viên</p>
+        <p>Điều khoản</p>
+      </div>
+    </div>
+  </footer>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js">
+</script>
+
+<script type="module" src="../asset/js/auth.js"></script>
+<script src="../asset/js/detail.js" type="module" ></script>
+</html>

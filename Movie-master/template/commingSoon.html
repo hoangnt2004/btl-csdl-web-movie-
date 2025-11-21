@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>PCINEMA-Phim sắp ra mắt</title>
+    <link rel="stylesheet" href="../asset/css/navbar.css">
+  <link rel="stylesheet" href="../asset/css/footer.css">
+  <link rel="stylesheet" href="../asset/css/commingSoon.css">
+    <link rel="stylesheet" href="../asset/css/auth.css">
+</head>
+<body>
+   <header class="header">
+    <div class="left-section">
+      <div class="logo"><a href="home.html">PCINEMA</a></div>
+      <div class="nav-left">
+        <ul>
+<!--          <li><a href="#">Thể Loại</a></li>-->
+          <li><a href="nowShowing.html">Phim đang chiếu</a></li>
+          <li><a href="commingSoon.html">Phim sắp ra mắt</a></li>
+          <li><a href="event.html">Sự kiện / khuyến mãi</a></li>
+          <li><a href="about.html">Về PCINEMA</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="nav-right">
+      <form action="#" method="GET" class="search-form">
+      <input type="text" placeholder="Tìm kiếm..." name="search" />
+      <button type="submit">Tìm</button>
+       </form>
+      <ul id="auth_menu">
+
+      </ul>
+    </div>
+  </header>
+<!--    <div style="height:80px;"></div>-->
+
+  <!-- Slider: Banner phim -->
+  <div class="slider">
+    <div class="arrow arrow-left" id="prevBtn">&#10094;</div>
+<!--    <div class="slide active">-->
+<!--      <img src="../asset/image/Banner_1.jpg" alt="Banner 1">-->
+<!--    </div>-->
+<!--    <div class="slide">-->
+<!--      <img src="../asset/image/Banner_2.jpg" alt="Banner 2">-->
+<!--    </div>-->
+<!--    <div class="slide">-->
+<!--      <img src="../asset/image/Banner_3.webp" alt="Banner 3">-->
+<!--    </div>-->
+
+
+    <div class="arrow arrow-right" id="nextBtn">&#10095;</div>
+  </div>
+    <section class="coming-soon">
+    <h2 id="coming-soon">Phim sắp ra mắt</h2>
+    <div class="movie-grid">
+      <!-- Mỗi thẻ movie-card là 1 phim; có thể lặp lại vô hạn -->
+<!--      <div class="movie-card">-->
+<!--        <img src="../asset/image/post (72).jpg" alt="Phim 1">-->
+<!--        <div class="overlay">Chi tiết</div>-->
+<!--        <h3>Phim 1</h3>-->
+
+<!--      </div>-->
+<!--      <div class="movie-card">-->
+<!--        <img src="../asset/image/post (73).jpg" alt="Phim 2">-->
+<!--        <div class="overlay">Chi tiết</div>-->
+<!--        <h3>Phim 2</h3>-->
+<!--      </div>-->
+<!--      <div class="movie-card">-->
+<!--        <img src="../asset/image/post (74).jpg" alt="Phim 3">-->
+<!--        <div class="overlay">Chi tiết</div>-->
+<!--        <h3>Phim 3</h3>-->
+<!--      </div>-->
+<!--      <div class="movie-card">-->
+<!--        <img src="../asset/image/post (75).jpg" alt="Phim 4">-->
+<!--        <div class="overlay">Chi tiết</div>-->
+<!--        <h3>Phim 4</h3>-->
+<!--      </div>-->
+<!--      <div class="movie-card">-->
+<!--        <img src="../asset/image/post (76).jpg" alt="Phim 4">-->
+<!--        <div class="overlay">Chi tiết</div>-->
+<!--        <h3>Phim 5</h3>-->
+<!--      </div>-->
+<!--      <div class="movie-card">-->
+<!--        <img src="../asset/image/post (77).jpg" alt="Phim 4">-->
+<!--        <div class="overlay">Chi tiết</div>-->
+<!--        <h3>Phim 6</h3>-->
+<!--      </div>-->
+<!--      <div class="movie-card">-->
+<!--        <img src="../asset/image/post (78).jpg" alt="Phim 4">-->
+<!--        <div class="overlay">Chi tiết</div>-->
+<!--        <h3>Phim 7</h3>-->
+<!--      </div>-->
+      <!-- Thêm các movie-card khác nếu cần, grid sẽ tự động tạo hàng mới -->
+    </div>
+    </section>
+    <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Quy định và chính sách chung</h3>
+        <p>Hotline: 19002099</p>
+        <p>Giờ làm việc: 7:00 - 23:00 (bao gồm cả Lễ, Tết)</p>
+        <p>Email hỗ trợ: <a href="mailto:cskh@ptit.vn">cskh@ptit.vn</a></p>
+      </div>
+      <div class="footer-section">
+        <h3>Liên Hệ</h3>
+        <p>Hệ Thống Rạp</p>
+        <p>Quy định và điều khoản</p>
+        <p>Về PCINEMA</p>
+        <p>Chăm sóc khách hàng</p>
+      </div>
+      <div class="footer-section">
+        <h3>Thông tin thêm</h3>
+        <p>Cụm Rạp</p>
+        <p>Hướng dẫn đặt vé trực tuyến</p>
+        <p>Quy định thành viên</p>
+        <p>Điều khoản</p>
+      </div>
+    </div>
+  </footer>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+ <script src ="../asset/js/commingSoon.js">
+  // Hàm khởi tạo slider sau khi đã có .slide
+
+  </script>
+
+</body>
+<script type="module" src="../asset/js/auth.js"></script>
+</html>
