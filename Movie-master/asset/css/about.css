@@ -1,0 +1,74 @@
+.banner {
+  width: 100%;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+.banner img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.about-section {
+      padding: 20px;
+      text-align: center;
+    }
+    .about-section h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #5c9836;
+    }
+    .slider {
+      position: relative;
+      width: 70%;
+      margin: 0 auto;
+      overflow: hidden;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      background: #f8f8f8;
+    }
+    .slides {
+        height: 60%;
+      position: relative;
+      width: 100%;
+    }
+    .slide {
+      display: none;
+    }
+    .slide.active {
+      display: block;
+    }
+    .slide img {
+      width: 80%;
+      height: auto;
+      display: block;
+        margin: 0 auto;
+    }
+    .caption {
+      padding: 10px;
+      background: #fff;
+      color: #333;
+      font-size: 1rem;
+      text-align: left;
+      line-height: 1.5;
+    }
+    .slider-nav {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+    }
+    .slider-nav span {
+      cursor: pointer;
+      font-size: 2rem;
+      color: rgba(0,0,0,0.6);
+      background: rgba(255,255,255,0.7);
+      padding: 5px 10px;
+      border-radius: 3px;
+      user-select: none;
+    }
+    .slider-nav span:hover {
+      background: rgba(255,255,255,0.9);
+    }
